@@ -7,42 +7,42 @@
     <style>
         body {
             font-family: sans-serif;
-            background-color: #f0f0f0;  
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            background-color: #fff; 
+            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 80%; 
-            max-width: 600px; 
+            width: 80%;
+            max-width: 600px;
         }
 
         h1 {
             text-align: center;
-            color: #333; 
+            color: #333;
         }
 
         label {
-            display: block; 
+            display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
 
         input[type="text"] {
-            width: 100%; 
+            width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; 
+            box-sizing: border-box;
         }
 
         input[type="radio"] {
@@ -50,43 +50,74 @@
         }
 
         button {
-            background-color: #4CAF50; 
+            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%; 
+            width: 100%;
         }
 
         button:hover {
-            background-color: #3e8e41; 
+            background-color: #3e8e41;
         }
 
         p {
             font-size: 0.9em;
-            color: #777; 
+            color: #777;
             text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container"> 
+    <div class="container">
         <h1>YouTube to MP3/MP4 Converter</h1>
         <form method="POST" action="/">
             <label for="youtube_url">YouTube URL:</label>
             <input type="text" id="youtube_url" name="youtube_url" required><br><br>
 
             <label>Select Format:</label><br>
-            <input type="radio" id="mp3" name="format_choice" value="mp3" checked>
+            <input type="radio" id="mp3" name="format_choice" value="mp3" checked onchange="toggleQualityOptions()">
             <label for="mp3">MP3 (Audio)</label><br>
-            <input type="radio" id="mp4" name="format_choice" value="mp4">
+            <input type="radio" id="mp4" name="format_choice" value="mp4" onchange="toggleQualityOptions()">
             <label for="mp4">MP4 (Video)</label><br><br>
+
+            <div id="qualityOptions">
+                
+            </div>
 
             <button type="submit">Convert</button>
         </form>
         <p>Note: Converting copyrighted content may violate copyright laws. Use with caution.</p>
-    </div> 
+    </div>
+
+    <script>
+    function toggleQualityOptions() {
+        const formatChoice = document.querySelector('input[name="format_choice"]:checked').value;
+        const qualityOptionsDiv = document.getElementById('qualityOptions');
+        qualityOptionsDiv.innerHTML = ''; 
+
+        if (formatChoice === 'mp3') {
+            qualityOptionsDiv.innerHTML = `
+                <label>Audio Quality:</label><br>
+                <input type="radio" id="best_audio" name="audio_quality" value="best" checked>
+                <label for="best_audio">Best Quality</label><br>
+                <input type="radio" id="low_audio" name="audio_quality" value="low">
+                <label for="low_audio">Low Quality</label><br><br>
+            `;
+        } else if (formatChoice === 'mp4') {
+            qualityOptionsDiv.innerHTML = `
+                <label>Video Quality:</label><br>
+                <input type="radio" id="highest_video" name="video_quality" value="highest" checked>
+                <label for="highest_video">Highest Quality</label><br>
+                <input type="radio" id="lowest_video" name="video_quality" value="lowest">
+                <label for="lowest_video">Lowest Quality</label><br><br>
+            `;
+        }
+    }
+    toggleQualityOptions();
+    </script>
 </body>
 </html>
