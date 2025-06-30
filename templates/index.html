@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3/MP4 Converter</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;  /* Light gray background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Make sure it takes up at least the whole viewport height */
+        }
+
+        .container {
+            background-color: #fff; /* White container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%; /* Adjust as needed */
+            max-width: 600px; /* Limit the width */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333; /* Dark gray heading */
+        }
+
+        label {
+            display: block; /* Make labels block-level to take up the full width */
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%; /* Make text input full width */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in the element's total width/height */
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;  /* Make the button full-width as well */
+        }
+
+        button:hover {
+            background-color: #3e8e41; /* Darker green on hover */
+        }
+
+        p {
+            font-size: 0.9em;
+            color: #777; /* Gray text */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">  <!-- Added a container div -->
+        <h1>YouTube to MP3/MP4 Converter</h1>
+        <form method="POST" action="/">
+            <label for="youtube_url">YouTube URL:</label>
+            <input type="text" id="youtube_url" name="youtube_url" required><br><br>
+
+            <label>Select Format:</label><br>
+            <input type="radio" id="mp3" name="format_choice" value="mp3" checked>
+            <label for="mp3">MP3 (Audio)</label><br>
+            <input type="radio" id="mp4" name="format_choice" value="mp4">
+            <label for="mp4">MP4 (Video)</label><br><br>
+
+            <button type="submit">Convert</button>
+        </form>
+        <p>Note: Converting copyrighted content may violate copyright laws. Use with caution.</p>
+    </div> <!-- Close the container div -->
+</body>
+</html>

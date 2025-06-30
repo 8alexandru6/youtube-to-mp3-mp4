@@ -1,0 +1,11 @@
+version: "3.8"  # Specify the Docker Compose version (adjust if needed)
+
+services:
+  web:
+    build: .  # Build the image from the Dockerfile in the current directory
+    ports:
+      - "5000:5000"  # Map port 5000 on the host to port 5000 in the container
+    volumes:
+      - ./downloads:/app/downloads  # Mount the downloads directory
+    environment:
+      - FLASK_DEBUG=1  # Enable debug mode for development
